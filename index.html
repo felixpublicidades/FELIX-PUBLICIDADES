@@ -1787,23 +1787,15 @@ function pergunta(d,pk,total,tipo){
  o.addEventListener('click',function(e){if(e.target===o)fechar();});
  function el(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n;}
  function btn(txt,cls,fn){var b=el('button','b '+(cls||''),txt);b.type='button';b.addEventListener('click',fn);box.appendChild(b);return b;}
- function inicio(){
-  box.textContent='';box.appendChild(el('h3','', 'Qual é o tipo de serviço?'));
-  box.appendChild(el('p','sb','Reserva '+dt+' · '+pk.h+'h · '+brl(pk.v)));
-  btn('Serviço privado','ok',function(){fechar();abrirPix(d,pk,total,tipo);});
-  btn('Serviço público','',publico);
-  btn('Cancelar','',fechar);
-  box.appendChild(el('p','nt','Serviço privado: reserva com Pix (sinal de 50% ou valor total). Serviço público: a nota é gerada sem sinal, com o contrato fechado.'));
- }
- function publico(){
-  box.textContent='';box.appendChild(el('h3','','Serviço público'));
-  box.appendChild(el('p','sb','Sem sinal. A NFe sai em até 24h após o fechamento do contrato.'));
-  var base='#cliente Oi, represento uma instituição pública. Reserva do dia '+dt+' ('+brl(pk.v)+' por '+pk.h+'h)'+(tipo||'')+'. ';
-  btn('Contrato já fechado: solicitar a nota','ok',function(){window.open(wa(base+'O contrato já está fechado e quero solicitar a emissão da nota (NFe em 24h), sem sinal.'),'_blank');fechar();document.dispatchEvent(new Event('felix:reserva'));});
-  btn('Ainda vou fechar o contrato','',function(){window.open(wa(base+'Quero fechar o contrato para depois solicitar a emissão da nota.'),'_blank');fechar();document.dispatchEvent(new Event('felix:reserva'));});
-  btn('Voltar','',inicio);
- }
- inicio();document.body.appendChild(o);var f=box.querySelector('.ok');if(f)f.focus();
+ box.appendChild(el('h3','','Qual é o tipo de serviço?'));
+ box.appendChild(el('p','sb','Reserva '+dt+' · '+pk.h+'h · '+brl(pk.v)));
+ btn('Serviço privado','ok',function(){fechar();abrirPix(d,pk,total,tipo);});
+ btn('Serviço público','',function(){
+  var msg='#cliente Oi, represento uma instituição pública. Quero a reserva do dia '+dt+' ('+brl(pk.v)+' por '+pk.h+'h)'+(tipo||'')+'. Peço contato para fechar o contrato e a emissão da nota (NFe em 24h), sem sinal.';
+  window.open(wa(msg),'_blank');fechar();document.dispatchEvent(new Event('felix:reserva'));});
+ btn('Cancelar','',fechar);
+ box.appendChild(el('p','nt','Privado: reserva com Pix. Público: abre o WhatsApp para contato e nota, sem sinal.'));
+ document.body.appendChild(o);var f=box.querySelector('.ok');if(f)f.focus();
 }
 window.FX_SEL=null;
 window.FX_PAY=function(d,info,we,nm){
