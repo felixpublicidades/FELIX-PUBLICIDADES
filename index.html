@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#09090d">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Felix Publicidades">
 <meta property="og:title" content="Felix Publicidades"><meta property="og:description" content="Felix Publicidades: +10 anos em marketing e propaganda. Locução, social media, criação de conteúdo e jornalismo. Peça seu orçamento.">
-<meta property="og:url" content="https://felixpublicidades.github.io/FELIX-PUBLICIDADES/"><meta property="og:image" content="https://felixpublicidades.github.io/FELIX-PUBLICIDADES/img/previa.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Felix Publicidades"><meta name="twitter:description" content="Felix Publicidades: +10 anos em marketing e propaganda. Locução, social media, criação de conteúdo e jornalismo. Peça seu orçamento."><meta name="twitter:image" content="https://felixpublicidades.github.io/FELIX-PUBLICIDADES/img/previa.jpg">
+<meta property="og:url" content="https://felixpublicidades.com.br/"><meta property="og:image" content="https://felixpublicidades.com.br/img/previa.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Felix Publicidades"><meta name="twitter:description" content="Felix Publicidades: +10 anos em marketing e propaganda. Locução, social media, criação de conteúdo e jornalismo. Peça seu orçamento."><meta name="twitter:image" content="https://felixpublicidades.com.br/img/previa.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#09090d;--surface:#16161e;--surface2:#1f1f2a;--line:#2b2b3a;--text:#f3f3f7;--muted:#a1a1b5;--a1:#ff7a1a;--a2:#e8b84a;
@@ -222,20 +222,19 @@ h1{font-size:clamp(40px,12vw,54px)}
 .wafab:focus-visible,.ig:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .wrap{padding-bottom:84px}
 footer a{text-decoration:underline}
-.agenda{padding:12px;margin-top:10px}
-.agenda h2{font-size:15px;margin:0 0 2px}
-.agenda .lead{font-size:10.5px;margin:0 0 8px}
-.prices{gap:6px;margin-bottom:8px}
-.pr{padding:7px 4px;border-radius:10px}.pr b{font-size:15px}.pr span{font-size:10px}
-.tabs{margin-bottom:6px;gap:5px}.tabs button{padding:6px;font-size:11px;border-radius:8px}
-.cal{gap:3px}.cal .wd{padding:1px 0;font-size:9.5px}
-.cal button{aspect-ratio:auto;height:29px;border-radius:8px;font-size:11.5px}
-.leg{margin:8px 0;gap:4px 10px;font-size:9.5px}.leg i{width:8px;height:8px;margin-right:4px}
-.info{padding:10px 12px;font-size:11.5px;line-height:1.45;border-radius:10px}
-.info a{margin-top:6px;padding:7px 12px;font-size:11px}
-.note{margin:8px 0 0;font-size:9.5px;line-height:1.4}
-.pk{margin-top:8px;padding-top:8px}.pk .pkl{margin-bottom:5px;font-size:10.5px}
-.pk .row{margin-bottom:0}.pk button{padding:8px 4px;font-size:11px}
+.agenda{padding:16px 14px;margin-top:12px}
+.agenda h2{font-size:17px;margin:0 0 3px}
+.agenda .lead{font-size:11.5px;margin:0 0 12px}
+.prices{gap:8px;margin-bottom:12px}
+.pr{padding:10px 4px;border-radius:12px}.pr b{font-size:17px}.pr span{font-size:10.5px}
+.tabs{margin-bottom:10px;gap:6px}.tabs button{padding:9px;font-size:12px;border-radius:10px}
+.cal{gap:4px}.cal .wd{padding:2px 0 3px;font-size:10px}
+.cal button{aspect-ratio:auto;height:34px;border-radius:9px;font-size:12px}
+.leg{margin:12px 0;gap:5px 12px;font-size:10px}.leg i{width:9px;height:9px;margin-right:5px}
+.info{padding:12px 14px;font-size:12px;line-height:1.5;border-radius:12px}
+.note{margin:10px 0 0;font-size:10.5px;line-height:1.45}
+.pk{margin-top:10px;padding-top:10px}.pk .pkl{margin-bottom:7px;font-size:11.5px}
+.pk .row{margin-bottom:0}.pk button{padding:10px 4px;font-size:12px}
 .agenda:has(#info .pk) .note{display:none}
 </style>
 </head>
@@ -353,7 +352,7 @@ function pick(d,el){
  else if(we)t='<b>'+ttl+'</b><br>Horário comercial. Evento noturno? Valores mais flexíveis.';
  else t='<b>'+ttl+'</b><br>Dia útil: eventos noturnos, com valores mais flexíveis.';
  var m=TAG+'Oi, quero reservar o dia '+p2(d.getDate())+'/'+p2(d.getMonth()+1)+'/2026. '+MSG;
- info.innerHTML=t+'<br><a href="https://wa.me/'+WA+'?text='+encodeURIComponent(m)+'" target="_blank" rel="noopener">Reservar esta data no WhatsApp</a>';
+ info.innerHTML=t;
   if(window.FX_PAY)window.FX_PAY(d,info,we,nm);
 }
 function draw(m){
@@ -1752,7 +1751,7 @@ function copiar(t,ta,btn){
  var ok=function(){btn.textContent='Código copiado!';setTimeout(function(){btn.textContent='Copiar código Pix';},2200);};
  function fb(){ta.focus();ta.select();try{ta.setSelectionRange(0,99999);document.execCommand('copy');ok();}catch(e){btn.textContent='Selecione e copie o texto acima';}}
  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb();}
-function abrir(d,pk,total,tipo){
+function abrirPix(d,pk,total,tipo){
  var v=pk.v,val=total?v:v/2,dt=p2(d.getDate())+'/'+p2(d.getMonth()+1)+'/'+d.getFullYear();
  var msg='#cliente Oi, quero reservar o dia '+dt+' ('+brl(v)+' por '+pk.h+'h)'+(tipo||'')+'. Vou pagar '+(total?'o valor total':'o sinal de 50%')+' de '+brl(val)+' por Pix e já envio o comprovante.';
  if(!PIX_KEY){window.open(wa(msg+' Pode me enviar a chave Pix?'),'_blank');document.dispatchEvent(new Event('felix:reserva'));return;}
@@ -1774,10 +1773,38 @@ function abrir(d,pk,total,tipo){
  document.body.appendChild(o);o.querySelector('.cp').focus();
 }
 function opcoes(box,d,pk,tipo){
- var l=document.createElement('div');l.className='pkl';l.textContent='Pagar por Pix:';box.appendChild(l);
+ var l=document.createElement('div');l.className='pkl';l.textContent='Reserve pagando com Pix';box.appendChild(l);
  var r2=document.createElement('div');r2.className='row two';
- [[false,'Sinal de 50%',pk.v/2],[true,'Valor total',pk.v]].forEach(function(o){var g=document.createElement('button');g.type='button';g.className='go';g.textContent=o[1]+' · '+brl(o[2]);g.addEventListener('click',function(){abrir(d,pk,o[0],tipo);});r2.appendChild(g);});
+ [[false,'Sinal de 50%',pk.v/2],[true,'Valor total',pk.v]].forEach(function(o){var g=document.createElement('button');g.type='button';g.className='go';g.textContent=o[1]+' · '+brl(o[2]);g.addEventListener('click',function(){pergunta(d,pk,o[0],tipo);});r2.appendChild(g);});
  box.appendChild(r2);}
+function pergunta(d,pk,total,tipo){
+ var dt=p2(d.getDate())+'/'+p2(d.getMonth()+1)+'/'+d.getFullYear();
+ var o=document.createElement('div');o.className='pixm';o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');o.setAttribute('aria-label','Tipo de serviço');
+ var box=document.createElement('div');o.appendChild(box);
+ function fechar(){document.removeEventListener('keydown',esc);if(o.parentNode)o.parentNode.removeChild(o);}
+ function esc(e){if(e.key==='Escape')fechar();}
+ document.addEventListener('keydown',esc);
+ o.addEventListener('click',function(e){if(e.target===o)fechar();});
+ function el(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n;}
+ function btn(txt,cls,fn){var b=el('button','b '+(cls||''),txt);b.type='button';b.addEventListener('click',fn);box.appendChild(b);return b;}
+ function inicio(){
+  box.textContent='';box.appendChild(el('h3','', 'Qual é o tipo de serviço?'));
+  box.appendChild(el('p','sb','Reserva '+dt+' · '+pk.h+'h · '+brl(pk.v)));
+  btn('Serviço privado','ok',function(){fechar();abrirPix(d,pk,total,tipo);});
+  btn('Serviço público','',publico);
+  btn('Cancelar','',fechar);
+  box.appendChild(el('p','nt','Serviço privado: reserva com Pix (sinal de 50% ou valor total). Serviço público: a nota é gerada sem sinal, com o contrato fechado.'));
+ }
+ function publico(){
+  box.textContent='';box.appendChild(el('h3','','Serviço público'));
+  box.appendChild(el('p','sb','Sem sinal. A NFe sai em até 24h após o fechamento do contrato.'));
+  var base='#cliente Oi, represento uma instituição pública. Reserva do dia '+dt+' ('+brl(pk.v)+' por '+pk.h+'h)'+(tipo||'')+'. ';
+  btn('Contrato já fechado: solicitar a nota','ok',function(){window.open(wa(base+'O contrato já está fechado e quero solicitar a emissão da nota (NFe em 24h), sem sinal.'),'_blank');fechar();document.dispatchEvent(new Event('felix:reserva'));});
+  btn('Ainda vou fechar o contrato','',function(){window.open(wa(base+'Quero fechar o contrato para depois solicitar a emissão da nota.'),'_blank');fechar();document.dispatchEvent(new Event('felix:reserva'));});
+  btn('Voltar','',inicio);
+ }
+ inicio();document.body.appendChild(o);var f=box.querySelector('.ok');if(f)f.focus();
+}
 window.FX_SEL=null;
 window.FX_PAY=function(d,info,we,nm){
  var sel=window.FX_SEL;if(!sel&&!(we&&!nm))return;
