@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://felixpublicidades.com.br/"><meta property="og:image" content="https://felixpublicidades.com.br/previa.jpg?v=4"><meta property="og:image:secure_url" content="https://felixpublicidades.com.br/previa.jpg?v=4"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:alt" content="Felix Publicidades: locução, social media, criação de conteúdo e jornalismo"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Felix Publicidades"><meta name="twitter:description" content="Felix Publicidades: +10 anos em marketing e propaganda. Locução, social media, criação de conteúdo e jornalismo. Peça seu orçamento."><meta name="twitter:image" content="https://felixpublicidades.com.br/previa.jpg?v=4">
 <link rel="image_src" href="https://felixpublicidades.com.br/previa.jpg?v=4">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#09090d;--surface:#16161e;--surface2:#1f1f2a;--line:#2b2b3a;--text:#f3f3f7;--muted:#a1a1b5;--a1:#ff7a1a;--a2:#e8b84a;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -347,6 +347,14 @@ function show(n,dir){
  if(RM){typ.textContent=txt;if(!isV)tm=setTimeout(function(){show((n+1)%imgs.length,1);},dur);return;}
  iv=setInterval(function(){typ.textContent=txt.slice(0,++k);if(k>=txt.length){clearInterval(iv);end();}},34);
 }
+function drop(w){var j=wr.indexOf(w);if(j<0)return;var was=(pv===j);
+ if(w.parentNode)w.parentNode.removeChild(w);wr.splice(j,1);VS.splice(j,1);SL.splice(j,1);imgs.splice(j,1);
+ if(dots.lastChild)dots.removeChild(dots.lastChild);
+ if(was){pv=-1;clearTimeout(tm);clearTimeout(rt);show(j%wr.length,1);}
+ else{if(j<pv)pv--;if(j<cur)cur--;[].forEach.call(dots.children,function(x,i){x.className=i<pv?'d':(i===pv?'a':'');});}}
+wr.slice().forEach(function(w){if(!w.classList.contains('vs'))return;
+ w.querySelector('video').addEventListener('error',function(){drop(w);});
+ if(/^https?:/.test(location.protocol)&&window.fetch)fetch(w.dataset.src,{method:'HEAD',cache:'no-cache'}).then(function(rs){if(!rs.ok)drop(w);}).catch(function(){});});
 show(0);
 document.getElementById('prev').addEventListener('click',function(){manual(function(){show((cur-1+imgs.length)%imgs.length,-1);});});
 document.getElementById('next').addEventListener('click',function(){manual(function(){show((cur+1)%imgs.length,1);});});
@@ -1992,6 +2000,25 @@ document.addEventListener('contextmenu',function(e){var t=e.target;if(t&&t.close
 document.addEventListener('dragstart',function(e){if(e.target&&/IMG|VIDEO/.test(e.target.tagName))e.preventDefault();},true);
 function trava(v){v.setAttribute('controlsList','nodownload noremoteplayback');v.setAttribute('disablePictureInPicture','');v.setAttribute('disableRemotePlayback','');v.disablePictureInPicture=true;}
 [].forEach.call(document.querySelectorAll('video'),trava);
+})();
+</script>
+
+<script>
+/* ---- esconde mídia que não existe no repositório ---- */
+(function(){
+if(!/^https?:/.test(location.protocol)||!window.fetch)return;
+function limpa(){
+ [].forEach.call(document.querySelectorAll('.thumbs'),function(t){
+  if(!t.querySelector('.th')){t.style.display='none';var h=t.previousElementSibling;if(h&&h.classList.contains('sec'))h.style.display='none';}});
+ [].forEach.call(document.querySelectorAll('.card'),function(c){
+  if(!c.querySelector('.th')&&!c.querySelector('.news,.svc'))c.style.display='none';});
+}
+function rm(b){if(b.parentNode)b.parentNode.removeChild(b);limpa();}
+[].forEach.call(document.querySelectorAll('.th'),function(b){
+ var im=b.querySelector('img'),k=b.dataset.v;
+ if(im&&!/^data:/.test(im.getAttribute('src')||'')){var p=new Image();p.onerror=function(){if(k){if(im.parentNode)im.parentNode.removeChild(im);}else rm(b);};p.src=im.src;}
+ if(k&&window.VID&&VID[k])fetch(VID[k],{method:'HEAD',cache:'no-cache'}).then(function(rs){if(!rs.ok)rm(b);}).catch(function(){});
+});
 })();
 </script>
 </body>
