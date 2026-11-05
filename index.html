@@ -262,6 +262,9 @@ footer a{text-decoration:underline}
 .indic button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .sec+.thumbs+.sec{margin-top:4px}
 .player .cap{padding-right:62px}
+.slides img,.slides video,.th img,#modal img,.collage i{pointer-events:none}
+img,video{-webkit-user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.slides,.th,.player,#modal{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
@@ -1979,6 +1982,16 @@ function tick(){
 }
 setInterval(tick,60);
 document.addEventListener('visibilitychange',tick);
+})();
+</script>
+
+<script>
+/* ---- proteção básica: sem menu de copiar/baixar mídia ---- */
+(function(){
+document.addEventListener('contextmenu',function(e){var t=e.target;if(t&&t.closest&&t.closest('img,video,.slides,.th,#modal,.player,.collage'))e.preventDefault();},true);
+document.addEventListener('dragstart',function(e){if(e.target&&/IMG|VIDEO/.test(e.target.tagName))e.preventDefault();},true);
+function trava(v){v.setAttribute('controlsList','nodownload noremoteplayback');v.setAttribute('disablePictureInPicture','');v.setAttribute('disableRemotePlayback','');v.disablePictureInPicture=true;}
+[].forEach.call(document.querySelectorAll('video'),trava);
 })();
 </script>
 </body>
